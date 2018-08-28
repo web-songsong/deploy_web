@@ -3,10 +3,8 @@ title: 个人网站的搭建
 date: 2018-08-26 00:00:01
 tags:
 - web
-cover:
+cover: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535477011975&di=94d4c3579ab340a30e1dd6e2051c2757&imgtype=0&src=http%3A%2F%2Fcdn2.hubspot.net%2Fhub%2F153377%2Ffile-1603872811-jpg%2Fkaizen.jpg%3Ft%3D1412948026141
 ---
-
-# 个人网站的搭建
 
 > *本文记录的是个人搭建网站的思想，可能有更好的方法。欢迎吐槽。*
 
