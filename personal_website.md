@@ -69,14 +69,14 @@ cover:
    ```bash
    .
    ├── node_modules	# 安装的依赖
-   ├── app.js			# 配置文件
+   ├── app.js	# 配置文件
    ├── bin				
-   │   └── www			# 启动文件
+   │   └── www	# 启动文件
    ├── package.json	# npm的配置文件
    ├── router			
    │   ├── index.js	# 路由的总出口
-   │   └── postHook.js # 需要用来接收GitHub发出的post请求的路由文件
-   └── yarn.lock		# 可以忽略(利用yran安装依赖自动生成)
+   │   └── postHook.js	# 接受post请求的路由文件
+   └── yarn.lock	# 可以忽略(利用yran安装依赖自动生成)
    ```
 
    > 博客的目的不是记录代码，不是为了将代码复制到这里给大家利用，如果是想快速搭建博客我相信网上有很多优秀的文章可以让你达到目的。
