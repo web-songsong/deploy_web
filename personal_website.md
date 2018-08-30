@@ -79,6 +79,119 @@ cover:
    └── yarn.lock	# 可以忽略(利用yran安装依赖自动生成)
    ```
 
-   > 博客的目的不是记录代码，不是为了将代码复制到这里给大家利用，如果是想快速搭建博客我相信网上有很多优秀的文章可以让你达到目的。
+   > 博客的目的不是记录代码，不是为了将代码复制到这里给大家利用，如果是想快速搭建博客我相信网上有很多优秀的文章可以让你达到目的，而我更希望让读者遇到不熟悉地方可以去翻阅文档去深入了解问题.
    >
-   > 而我更想让读者遇到不熟悉地方可以去翻阅文档去深入了解问题，不是将代码简单的复制黏贴得到结果。所以这里并不会把一些官网已经描述很清晰的问题在去复制过来。
+
+2. 各个文件的主要功能
+
+   * app.js
+
+     ```javascript
+     const Koa = require('koa')
+     const router = require('./router/index.js')
+     const bodyParser = require('koa-bodyparser')
+     
+     const app = new Koa()
+     
+     app.use(bodyParser())
+     app.use(router.routes())
+     
+     module.exports = app
+     ```
+
+     > 引入koa模块以及router文件，koa-bodyparser是用来方便解析接收到的post参数。
+
+   * bin/www
+
+     ```javascript
+     const app = require('../app.js')
+     
+     app.listen(process.env.PORT ? process.env.PORT : 8080)
+     
+     console.log(`server open ok, port: ${process.env.PORT ? process.env.PORT : 8080}`)
+     ```
+
+     > 引入配置好的app.js文件，然后监听环境变量如果有则开启相应端口，没有默认打开8080端口。
+
+   * router/index.js
+
+     ```javascript
+     const Router = require('koa-router')
+     const  postHook = require('./postHook.js')
+     const router = new Router()
+     
+     router.post('/xxxx', postHook)
+     
+     module.exports = router
+     ```
+
+     > 引入koa-router配置路由信息。并且引入处理接口xxxx（可以随意替换）的处理函数。
+
+   * router/postHook.js
+
+     ```javascript
+     const exec = require('child_process').exec
+     
+     let str = process.env.FLAG === 'server' 
+     ? bashServer // 服务器的终端操作  
+     : bash // 本地调试的终端操作
+     
+     async function postHook(ctx) {
+       if (!Object.values(ctx.request.body).length) return ctx.body = 'post请求为空'
+     
+       ctx.body = await new Promise((resolve, reject) => {
+         exec(str, {
+           shell: '/bin/zsh'
+         }, (err, stdout, stderr) => {
+           const errFlag = err || ''
+           if (errFlag) {
+             console.log('==============================')
+             console.log(errFlag)
+             console.log('==============================')
+             reject('失败')
+           }
+           console.log('++++++++++++++++++++++++++')
+           console.log(stdout)
+           console.log('++++++++++++++++++++++++++')
+           resolve('ok')
+         })
+       }).then(res => {
+         return res
+       }).catch(err => {
+         return err
+       })
+     }
+     module.exports = postHook
+     ```
+
+     > 引入child_process模块，child_process中的exec方法可以输出终端命令利用，方法可以具体可以查阅node文档。
+
+   * package.json
+
+     ```json
+     {
+       "name": "serverhook",
+       "version": "1.0.0",
+       "description": "",
+       "main": "app.js",
+       "scripts": {
+         "dev": "node_modules/.bin/nodemon ./bin/www",
+         "start": "FLAG=server yarn dev"
+       },
+       "author": "",
+       "license": "ISC",
+       "devDependencies": {
+         "koa": "^2.5.2",
+         "koa-bodyparser": "^4.2.1",
+         "koa-router": "^7.4.0"
+       },
+       "dependencies": {
+         "nodemon": "^1.18.3"
+       }
+     }
+     
+     ```
+
+     > script中dev是本地调试启动，start是服务器开发是启动，nodemon是一个自动重启服务的功能。
+
+   在node模块postHook.js是核心，认真理解其中的逻辑，本地启动服务`yarn dev`在服务器上启动服务`yarn start`。
