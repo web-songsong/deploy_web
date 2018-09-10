@@ -10,11 +10,13 @@ cover:
 
 > 网络爬虫是一种按照一定的规则，自动地抓取网络信息的程序或者脚本
 
+项目GitHub地址[web_crawler](https://github.com/web-songsong/web_crawler_node)
+
 ## 目标
 
 * 了解爬虫的本质
 * 利用node的相关模块来解决爬虫的问题
-* 分析数据的结构以及对数据进行处理
+* 分析数据的结构以及对数据进行处理
 
 ## 流程
 
