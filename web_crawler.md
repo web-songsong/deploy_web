@@ -3,7 +3,7 @@ title: node爬虫
 date: 2018-09-01 00:00:01
 tags:
 - node
-cover:
+cover: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537881891&di=6e0a7e43aefa2170f5cb07792f7fb73a&imgtype=jpg&er=1&src=http%3A%2F%2Fjohnharbison.net%2Fwp-content%2Fuploads%2F2014%2F02%2Fnode.png
 ---
 
 # 利用node.js完成爬虫
