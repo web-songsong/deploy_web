@@ -6,10 +6,4 @@ tags:
 cover:
 ---
 
-# vue cli3的使用
-
-## 简介
-
-> 官网：[vue cli3](https://cli.vuejs.org/zh/)
-
-Vue cli3的使用
+# npm 发布的流程
