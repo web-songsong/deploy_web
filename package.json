@@ -1,0 +1,25 @@
+{
+  "name": "deploy_web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "node_modules/.bin/nodemon server/app.js -i ./src ./docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-songsong/deploy_web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/web-songsong/deploy_web/issues"
+  },
+  "homepage": "https://github.com/web-songsong/deploy_web#readme",
+  "devDependencies": {
+    "koa": "^2.6.2",
+    "koa-router": "^7.4.0",
+    "nodemon": "^1.18.6"
+  }
+}
