@@ -1,9 +1,10 @@
 const router = require('koa-router')()
 const path = require('path')
-const { log, success, fatal } = require('../utils/logger.js')
+const { atten, log, success, fatal } = require('../utils/logger.js')
 const exec = require('util').promisify(require('child_process').exec)
 const ora = require('ora')
 router.post('/deploy/:projectName', async ctx => {
+  atten()
   if (!ctx.header['user-agent'].includes('GitHub-Hookshot')) {
     fatal('请求来源未知：\n     %s', ctx.header['user-agent'])
     return (ctx.status = 401)
