@@ -4,6 +4,11 @@ const { log, success, fatal } = require('../utils/logger.js')
 const exec = require('util').promisify(require('child_process').exec)
 const ora = require('ora')
 router.post('/deploy/:projectName', async ctx => {
+  if (!ctx.header['user-agent'].includes('GitHub-Hookshot')) {
+    fatal('请求来源未知：\n     %s', ctx.header['user-agent'])
+    return (ctx.status = 401)
+  }
+  const { commits } = ctx.request.body
   const dirHome = path.join(__dirname, `../../${ctx.params.projectName}`)
   const shellOperation = `git pull && yarn && yarn deploy`
   const spinner = ora('work').start()
@@ -12,7 +17,7 @@ router.post('/deploy/:projectName', async ctx => {
     .then(res => {
       spinner.succeed()
       success(shellOperation)
-      return 'success'
+      return ` success : ${commits.message}  `
     })
     .catch(err => {
       spinner.fail()
