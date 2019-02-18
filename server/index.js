@@ -15,11 +15,11 @@ router.post('/deploy/:projectName', async ctx => {
   const spinner = ora('work').start()
 
   ctx.body = exists(dirHome) ? '请求部署成功请稍后' : '确认项目是否存在'
-  await exec(shellOperation, { cwd: dirHome, shell: '/bin/zsh' })
+  exec(shellOperation, { cwd: dirHome, shell: '/bin/zsh' })
     .then(res => {
       spinner.succeed()
       success(shellOperation)
-      return ` success : ${c}  `
+      return ` success : ${ctx.params.projectName} 部署成功  `
     })
     .catch(err => {
       spinner.fail()
