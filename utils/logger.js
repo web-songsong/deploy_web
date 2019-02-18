@@ -5,7 +5,7 @@ const format = require('util').format
  * Prefix.
  */
 
-const prefix = '   deploy_auto'
+const prefix = '   deploy_web'
 const sep = chalk.gray('·')
 
 exports.atten = () => {

@@ -25,6 +25,7 @@ router.post('/deploy/:projectName', async ctx => {
       fatal(shellOperation)
       log(`检查 ${dirHome} 文件`)
       log(`检查  ${shellOperation} 命令`)
+      fatal(err)
       return 'error'
     })
 })
