@@ -1,25 +1,20 @@
 {
-  "name": "deploy_web",
+  "name": "deploy_auto",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "node_modules/.bin/nodemon server/app.js -i ./src ./docs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/web-songsong/deploy_web.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/web-songsong/deploy_web/issues"
-  },
-  "homepage": "https://github.com/web-songsong/deploy_web#readme",
-  "devDependencies": {
-    "koa": "^2.6.2",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "koa": "^2.7.0",
     "koa-router": "^7.4.0",
-    "nodemon": "^1.18.6"
+    "nodemon": "^1.18.10",
+    "ora": "^3.1.0"
   }
 }
