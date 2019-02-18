@@ -25,7 +25,5 @@
     "nodemon": "^1.18.10",
     "ora": "^3.1.0"
   },
-  "dependencies": {
-    "koa-bodyparser": "3"
-  }
+  "dependencies": {}
 }
