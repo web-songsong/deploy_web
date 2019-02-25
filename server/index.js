@@ -18,16 +18,14 @@ router.post('/deploy/:projectName', async ctx => {
   exec(shellOperation, { cwd: dirHome, shell: '/bin/zsh' })
     .then(res => {
       spinner.succeed()
-      success(shellOperation)
-      return ` success : ${ctx.params.projectName} 部署成功  `
+      success(` success : ${ctx.params.projectName} 部署成功  `)
     })
     .catch(err => {
       spinner.fail()
-      fatal(shellOperation)
+      fatal(` error : ${ctx.params.projectName} 部署失败  `)
       log(`检查 ${dirHome} 文件`)
       log(`检查  ${shellOperation} 命令`)
       fatal(err)
-      return 'error'
     })
 })
 
