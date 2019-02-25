@@ -14,7 +14,7 @@ router.post('/deploy/:projectName', async ctx => {
   const shellOperation = `git pull && yarn && yarn deploy`
   const spinner = ora('work').start()
 
-  ctx.body = exists(dirHome) ? '请求部署成功请稍后' : '确认项目是否存在'
+  ctx.body = (await exists(dirHome)) ? '请求部署成功请稍后' : '确认项目是否存在'
   exec(shellOperation, { cwd: dirHome, shell: '/bin/zsh' })
     .then(res => {
       spinner.succeed()
