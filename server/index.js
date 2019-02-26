@@ -4,9 +4,6 @@ const exists = require('fs').existsSync
 const { atten, log, success, fatal } = require('../utils/logger.js')
 const exec = require('util').promisify(require('child_process').exec)
 const ora = require('ora')
-
-
-
 router.post('/deploy/:projectName', async ctx => {
   atten()
   if (!ctx.header['user-agent'].includes('GitHub-Hookshot')) {
