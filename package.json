@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "node_modules/.bin/nodemon server/app.js -i ./src ./docs",
     "start": "pm2 start app.js --name deploy_web",
     "deploy": ""
   },
@@ -23,7 +22,6 @@
     "chalk": "^2.4.2",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
-    "nodemon": "^1.18.10",
     "ora": "^3.1.0"
   },
   "dependencies": {}
