@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2 start app.js --name deploy_web",
-    "deploy": "pm2 restart deploy_web",
-    "test": "ddd"
+    "deploy": "pm2 restart deploy_web"
   },
   "repository": {
     "type": "git",
